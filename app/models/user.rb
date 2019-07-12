@@ -9,4 +9,6 @@ class User < ApplicationRecord
     validates :password, length: { in: 3..20 }
 
     scope :most_recent, -> (limit) { order("created_at desc").limit(limit) }
+    scope :planets, -> {Observation.where(user_id: self.id)}
+    scope :systems, -> {Observation.where(user_id: self.id)}
 end

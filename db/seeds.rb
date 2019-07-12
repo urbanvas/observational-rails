@@ -7,6 +7,9 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 User.create(username: "Neil", email: "neil@neil.com", password_digest: "neil")
+User.create(username: "Neil", email: "neil@neil.com", password_digest: "neil")
 Observation.create(name: "first obv", user_id: 1)
+Observation.create(name: "sec obv", user_id: 2)
 System.create(name: "solar_first", observation_id: 1)
 Planet.create(name: "earth_1", observation_id: 1, system_id: 1)
+Planet.create(name: "earth_2", observation_id: 2, system_id: 1)
