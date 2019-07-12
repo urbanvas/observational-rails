@@ -6,8 +6,8 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-User.create(username: "Neil", email: "neil@neil.com", password_digest: "neil")
-User.create(username: "Neil", email: "neil@neil.com", password_digest: "neil")
+User.create(username: "Neil", email: "neil@neil.com", password: "neil")
+User.create(username: "Neil2", email: "neil2@neil.com", password: "neil2")
 Observation.create(name: "first obv", user_id: 1)
 Observation.create(name: "sec obv", user_id: 2)
 System.create(name: "solar_first", observation_id: 1)
