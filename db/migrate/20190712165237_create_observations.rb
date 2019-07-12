@@ -3,6 +3,7 @@ class CreateObservations < ActiveRecord::Migration[5.2]
     create_table :observations do |t|
       t.string :name
       t.belongs_to :user
+      t.timestamps
     end
   end
 end

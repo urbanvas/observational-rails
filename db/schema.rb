@@ -15,6 +15,8 @@ ActiveRecord::Schema.define(version: 2019_07_12_165250) do
   create_table "observations", force: :cascade do |t|
     t.string "name"
     t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_observations_on_user_id"
   end
 
@@ -22,6 +24,8 @@ ActiveRecord::Schema.define(version: 2019_07_12_165250) do
     t.string "name"
     t.integer "observation_id"
     t.integer "system_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["observation_id"], name: "index_planets_on_observation_id"
     t.index ["system_id"], name: "index_planets_on_system_id"
   end
@@ -29,6 +33,8 @@ ActiveRecord::Schema.define(version: 2019_07_12_165250) do
   create_table "systems", force: :cascade do |t|
     t.string "name"
     t.integer "observation_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["observation_id"], name: "index_systems_on_observation_id"
   end
 
@@ -36,6 +42,8 @@ ActiveRecord::Schema.define(version: 2019_07_12_165250) do
     t.string "username"
     t.string "email"
     t.string "password_digest"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
 end
