@@ -1,4 +1,15 @@
 <p id="notice"><%= notice %></p>
 
-<%= link_to 'Edit', edit_planet_path(@planet) %> |
-<%= link_to 'Back', planets_path %>
+
+  <tbody>
+    <% @planets.each do |planet| %>
+      <tr>
+        <%= planet.name %>
+        <td><%= link_to 'Show', planet %></td>
+        <td><%= link_to 'Edit', edit_planet_path(planet) %></td>
+        <br>
+        <td><%= link_to 'Destroy', planet, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <br>
+      </tr>
+    <% end %>
+  </tbody>
