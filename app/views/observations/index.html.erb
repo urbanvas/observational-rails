@@ -1,25 +1,11 @@
-<p id="notice"><%= notice %></p>
-
-<h1>Observations</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
+<h1>Index page</h1>
     <% @observations.each do |observation| %>
       <tr>
+        <%= observation.name %>
         <td><%= link_to 'Show', observation %></td>
-        <td><%= link_to 'Edit', edit_observation_path(observation) %></td>
+        <td><%= link_to 'Edit', edit_user_observation_path(params[:user_id], observation) %></td>
         <td><%= link_to 'Destroy', observation, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <br>
       </tr>
     <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Observation', new_observation_path %>
+<%= link_to 'New Observation', new_user_observation_path %>

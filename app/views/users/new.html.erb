@@ -1,3 +1,6 @@
 <h1>New User</h1>
 
-<%= render 'form', user: @user %>
+<%= form_for @user do |f| %>
+    <%= render 'error', :model => @user %> 
+    <%= render 'form', f: f %>
+<% end %>

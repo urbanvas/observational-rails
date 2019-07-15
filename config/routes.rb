@@ -13,7 +13,7 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :observations, only: [:index, :show]
-  resources :systems, only: [:index, :show]
-  resources :planets, only: [:index, :show]
+  # resources :observations, only: [:index, :show]
+  # resources :systems, only: [:index, :show]
+  # resources :planets, only: [:index, :show]
 end

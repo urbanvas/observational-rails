@@ -4,7 +4,7 @@ class ObservationsController < ApplicationController
   # GET /observations
   # GET /observations.json
   def index
-    @observations = Observation.all
+      @observations = Observation.all
   end
 
   # GET /observations/1

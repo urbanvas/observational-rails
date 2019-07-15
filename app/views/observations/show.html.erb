@@ -1,3 +1,14 @@
-<p id="notice"><%= notice %></p>
+<h1>Show Page</h1>
 
-<%= params %>
+
+<%= @observation.name %>
+<h1>Systems</h1>
+<% @observation.systems.each do |system| %>
+    <%= system.name %>
+    <br>
+<% end %>
+<h1>Planets</h1>
+<% @observation.planets.each do |planet| %>
+    <%= planet.name %>
+    <br>
+<% end %>
