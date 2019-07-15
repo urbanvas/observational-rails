@@ -2,4 +2,6 @@
 <h1>Show</h1>
 <%= @user.username %>
 <%= link_to 'Edit', edit_user_path(@user) %> |
+<%= link_to 'Logout', logout_path %>
 <%= link_to "Delete", @user, method: :delete, data: { confirm: "Really?" } %>
+<%= current_user.email %>

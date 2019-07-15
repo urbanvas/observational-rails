@@ -1,11 +1,1 @@
 <h1>Index page</h1>
-    <% @observations.each do |observation| %>
-      <tr>
-        <%= observation.name %>
-        <td><%= link_to 'Show', observation %></td>
-        <td><%= link_to 'Edit', edit_user_observation_path(params[:user_id], observation) %></td>
-        <td><%= link_to 'Destroy', observation, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        <br>
-      </tr>
-    <% end %>
-<%= link_to 'New Observation', new_user_observation_path %>

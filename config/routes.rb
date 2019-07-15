@@ -5,6 +5,13 @@ Rails.application.routes.draw do
   # in observations new/create you'll be able to add planets and systems one time
   # in observations edit/update you'll be able to edit names and delete planets/systems one time
   # in observations destroy you should delete planets/systems one time 
+
+  get '/login' => 'sessions#new'
+  post '/login' => 'sessions#create'
+  get '/logout' => 'sessions#destroy'
+
+  get '/auth/:provider/callback', to: 'sessions#create'
+
   resources :users, except: [:index]
   resources :observations, only: [:index, :show]
   resources :systems, only: [:index, :show]

@@ -11,3 +11,7 @@ I went ahead and looked through your code and there is a lot of great functional
 (destroy should destroy all planets and systems created for observation)
 
 # implment sessions and security before moving on so you can carrys session hash all over with you so you dont have to keep users/id in params
+
+# perhaps have only users new/create
+
+just to save time

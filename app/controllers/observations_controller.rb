@@ -1,5 +1,6 @@
 class ObservationsController < ApplicationController
   before_action :set_observation, only: [:show, :edit, :update, :destroy]
+  before_action :authentication_required
 
   # GET /observations
   # GET /observations.json
