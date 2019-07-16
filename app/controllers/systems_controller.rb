@@ -31,7 +31,7 @@ class SystemsController < ApplicationController
       @error = "Can't do that, it's not yours"
       @systems = System.all
       render :index
-    elsif @system.update(observation_params)
+    elsif @system.update(system_params)
       redirect_to @system
     else
       render :edit
