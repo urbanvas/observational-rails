@@ -1,5 +1,6 @@
 <h1>New System</h1>
 
-<%= render 'form', system: @system %>
-
-<%= link_to 'Back', systems_path %>
+<%= form_for [@system, @observation] do |f| %>
+    <%= render 'error/error', :model => @system %> 
+    <%= render 'form', f: f %>
+<% end %>

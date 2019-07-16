@@ -1,6 +1,6 @@
 <h1>Editing System</h1>
 
-<%= render 'form', system: @system %>
-
-<%= link_to 'Show', @system %> |
-<%= link_to 'Back', systems_path %>
+<%= form_for @system do |f| %>
+    <%= render 'error/error', :model => @system %> 
+    <%= render 'form', f: f %>
+<% end %>
