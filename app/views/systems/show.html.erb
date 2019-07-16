@@ -1,3 +1,7 @@
 <h1>Show Page</h1>
 
 <%= @system.name %>
+<br>
+<%= link_to "Edit System", edit_observation_system_path(@system.observation) %>
+<br>
+<%= link_to "Destroy", @system, method: :delete, data: {confirm: "Sure?"} %>

@@ -18,8 +18,6 @@ class SystemsController < ApplicationController
 
   def create
     @system = System.new(system_params)
-    @system.user_id = session[:user_id]
-    binding.pry
     if @system.valid?
       @system.save
       redirect_to @system
@@ -29,7 +27,7 @@ class SystemsController < ApplicationController
   end
 
   def update
-    if @system.user_id != session[:user_id]
+    if @system.observation_id != session[:user_id]
       @error = "Can't do that, it's not yours"
       @systems = System.all
       render :index
@@ -41,8 +39,14 @@ class SystemsController < ApplicationController
   end
 
   def destroy
-    @system.destroy
-    redirect_to systems_path
+    if @system.observation_id != session[:user_id]
+      @error = "Can't do that, it's not yours"
+      @systems = System.all
+      render :index
+    else 
+      @system.destroy
+      redirect_to systems_path
+    end
   end
 
   private
@@ -51,6 +55,6 @@ class SystemsController < ApplicationController
     end
 
     def system_params
-      params.fetch(:system, {})
+      params.require(:system).permit(:name, :observation_id)
     end
 end

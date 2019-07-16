@@ -19,7 +19,7 @@ Rails.application.routes.draw do
 
   resources :users, only: [:show, :new, :create]
   resources :observations, only: [:index, :show]
-  resources :systems, only: [:index, :show]
-  resources :planets, only: [:index, :show]
+  resources :systems, only: [:index, :show, :create, :update, :destroy]
+  resources :planets, only: [:index, :show, :create, :update, :destroy]
 
 end

@@ -4,10 +4,10 @@
 <%= @observation.name %>
 <h1>Systems</h1>
 <% @observation.systems.each do |system| %>
-<%= link_to system.name, observation_system_path %>
+<%= link_to system.name, observation_system_path(@observation) %>
     <br>
 <% end %>
-<%= link_to "Add System", new_observation_system_path(params[:id]) %>
+<%= link_to "Add System", new_observation_system_path(@observation) %>
 <h1>Planets</h1>
 <% @observation.planets.each do |planet| %>
     <%= planet.name %>
