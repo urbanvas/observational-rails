@@ -1,1 +1,12 @@
 <h1>Index page</h1>
+<% if @error %>
+    <h3><%= @error %></h3>
+<% end %>
+
+<% @observations.each do |observation| %>
+    <%= link_to observation.name , observation %>
+    <br>
+<% end %>
+
+
+<%= link_to "new", new_observation_path %>

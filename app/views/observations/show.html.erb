@@ -12,3 +12,5 @@
     <%= planet.name %>
     <br>
 <% end %>
+<%= link_to "Edit Observation", edit_observation_path %>
+<%= link_to "Destroy", @observation, method: :delete, data: {confirm: "Sure?"} %>

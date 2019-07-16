@@ -1,6 +1,6 @@
 <h1>Editing Observation</h1>
 
-<%= render 'form', observation: @observation %>
-
-<%= link_to 'Show', @observation %> |
-<%= link_to 'Back', observations_path %>
+<%= form_for @observation do |f| %>
+    <%= render 'error/error', :model => @observation %> 
+    <%= render 'form', f: f %>
+<% end %>

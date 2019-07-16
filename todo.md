@@ -15,3 +15,5 @@ I went ahead and looked through your code and there is a lot of great functional
 # perhaps have only users new/create
 
 just to save time
+
+<%= collection_select(:observation, :user_id, User.all, :id, :username, {}, {multiple: false}) %>

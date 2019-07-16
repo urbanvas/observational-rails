@@ -2,74 +2,66 @@ class ObservationsController < ApplicationController
   before_action :set_observation, only: [:show, :edit, :update, :destroy]
   before_action :authentication_required
 
-  # GET /observations
-  # GET /observations.json
   def index
       @observations = Observation.all
   end
 
-  # GET /observations/1
-  # GET /observations/1.json
   def show
   end
 
-  # GET /observations/new
   def new
     @observation = Observation.new
   end
 
-  # GET /observations/1/edit
   def edit
   end
 
-  # POST /observations
-  # POST /observations.json
   def create
     @observation = Observation.new(observation_params)
-
-    respond_to do |format|
-      if @observation.save
-        format.html { redirect_to @observation, notice: 'Observation was successfully created.' }
-        format.json { render :show, status: :created, location: @observation }
-      else
-        format.html { render :new }
-        format.json { render json: @observation.errors, status: :unprocessable_entity }
-      end
+    @observation.user_id = session[:user_id]
+    if @observation.valid?
+      @observation.save
+      redirect_to @observation
+    else
+      render :new
     end
   end
 
-  # PATCH/PUT /observations/1
-  # PATCH/PUT /observations/1.json
   def update
-    respond_to do |format|
-      if @observation.update(observation_params)
-        format.html { redirect_to @observation, notice: 'Observation was successfully updated.' }
-        format.json { render :show, status: :ok, location: @observation }
+      if @observation.user_id != session[:user_id]
+        @error = "Can't do that, it's not yours"
+        @observations = Observation.all
+        render :index
+      elsif @observation.update(observation_params)
+        redirect_to @observation
       else
-        format.html { render :edit }
-        format.json { render json: @observation.errors, status: :unprocessable_entity }
+        render :edit
       end
-    end
   end
 
-  # DELETE /observations/1
-  # DELETE /observations/1.json
   def destroy
-    @observation.destroy
-    respond_to do |format|
-      format.html { redirect_to observations_url, notice: 'Observation was successfully destroyed.' }
-      format.json { head :no_content }
+    if @observation.user_id != session[:user_id]
+      @error = "Can't do that, it's not yours"
+      @observations = Observation.all
+      render :index
+    else 
+      @observation.systems.each do |system|
+        system.destroy
+      end
+      @observation.planets.each do |planet|
+        planet.destroy
+      end
+      @observation.destroy
+      redirect_to observations_path
     end
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
     def set_observation
       @observation = Observation.find(params[:id])
     end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
     def observation_params
-      params.fetch(:observation, {})
+        params.require(:observation).permit(:name, user_id: session[:user_id])
     end
 end
