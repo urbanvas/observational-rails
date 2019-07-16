@@ -12,7 +12,7 @@ Rails.application.routes.draw do
 
   get '/auth/:provider/callback', to: 'sessions#create'
 
-  resources :users, except: [:index]
+  resources :users, only: [:show, :new, :create]
   resources :observations, only: [:index, :show]
   resources :systems, only: [:index, :show]
   resources :planets, only: [:index, :show]
