@@ -26,7 +26,7 @@ class GalaxiesController < ApplicationController
   end
 
   def update
-    if @galaxy.observation_id != session[:user_id]
+    if @galaxy.observation.user_id != session[:user_id]
       @error = "Can't do that, it's not yours"
       @galaxys = Galaxy.all
       render :index
@@ -38,9 +38,9 @@ class GalaxiesController < ApplicationController
   end
 
   def destroy
-    if @galaxy.observation_id != session[:user_id]
+    @galaxies = Galaxy.all
+    if @galaxy.observation.user_id != session[:user_id]
       @error = "Can't do that, it's not yours"
-      @galaxys = Galaxy.all
       render :index
     else 
       @galaxy.destroy

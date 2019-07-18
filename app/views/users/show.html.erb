@@ -1,11 +1,10 @@
 <h1>Show</h1>
 <%= @user.username %>
-
-<% @user.observations.each do |observation| %>
-<%= link_to observation.name, observation %>
 <br>
+<% @user.observations.each do |observation| %>
+<p>Observation: <%= link_to observation.name, observation %></p>
 <% end %>
 
 <br>
-<%= link_to "New Observation", new_observation_path %>
+<%= link_to "New Observation", new_observation_path %> |
 <%= link_to 'Logout', logout_path %>

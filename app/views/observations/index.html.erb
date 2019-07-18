@@ -1,12 +1,14 @@
-<h1>Index page</h1>
+<h1>Index page of All Observations</h1>
 <% if @error %>
     <h3><%= @error %></h3>
 <% end %>
 
 <% @observations.each do |observation| %>
-    <%= link_to observation.name , observation %>
+    <p>Observation: <%= link_to observation.name , observation %></p>
     <br>
 <% end %>
 
 
-<%= link_to "new", new_observation_path %>
+<%= link_to "New Observation", new_observation_path %> | 
+
+<%= link_to "Back to User Home", user_path(session[:user_id]) %>

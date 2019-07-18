@@ -1,9 +1,11 @@
-<h1>Index page</h1>
+<h1>Index page of All Planets</h1>
 <% if @error %>
     <h3><%= @error %></h3>
 <% end %>
 
 <% @planets.each do |planet| %>
-    <%= link_to planet.name , planet %>
+    <p>Planet: <%= link_to planet.name , planet %></p>
     <br>
 <% end %>
+
+<%= link_to "Back to User Home", user_path(session[:user_id]) %>

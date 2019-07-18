@@ -27,7 +27,7 @@ class PlanetsController < ApplicationController
   end
 
   def update
-    if @planet.observation_id != session[:user_id]
+    if @planet.observation.user_id != session[:user_id]
       @error = "Can't do that, it's not yours"
       @planets = Planet.all
       render :index
@@ -39,9 +39,9 @@ class PlanetsController < ApplicationController
   end
 
   def destroy
-    if @planet.observation_id != session[:user_id]
+    @planets = Planet.all
+    if @planet.observation.user_id != session[:user_id]
       @error = "Can't do that, it's not yours"
-      @planets = Planet.all
       render :index
     else 
       @planet.destroy

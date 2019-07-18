@@ -2,10 +2,10 @@
 
 <%= @galaxy.name %>
 <br>
+<% if session[:user_id] == @galaxy.observation.user_id %>
 <%= link_to "Edit Galaxy", edit_observation_galaxy_path(@galaxy.observation) %>
 <br>
 <%= link_to "Destroy", @galaxy, method: :delete, data: {confirm: "Sure?"} %>
 <br>
-<% if session[:user_id] %>
-<%= link_to "Back to Observation", @galaxy.observation %>
 <% end %>
+<%= link_to "Back to Observation", @galaxy.observation %>

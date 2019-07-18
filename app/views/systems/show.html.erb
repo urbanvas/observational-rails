@@ -2,10 +2,10 @@
 
 <%= @system.name %>
 <br>
+<% if session[:user_id] == @system.observation.user_id %>
 <%= link_to "Edit System", edit_observation_system_path(@system.observation) %>
 <br>
 <%= link_to "Destroy", @system, method: :delete, data: {confirm: "Sure?"} %>
 <br>
-<% if session[:user_id] %>
-<%= link_to "Back to Observation", @system.observation %>
 <% end %>
+<%= link_to "Back to Observation", @system.observation %>

@@ -1,9 +1,11 @@
-<h1>Index page</h1>
+<h1>Index page of All Galaxies</h1>
 <% if @error %>
     <h3><%= @error %></h3>
 <% end %>
 
 <% @galaxies.each do |galaxy| %>
-    <%= link_to galaxy.name , galaxy %>
+    <p>Galaxy: <%= link_to galaxy.name , galaxy %></p>
     <br>
 <% end %>
+<br>
+<%= link_to "Back to User Home", user_path(session[:user_id]) %>

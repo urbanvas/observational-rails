@@ -27,7 +27,7 @@ class SystemsController < ApplicationController
   end
 
   def update
-    if @system.observation_id != session[:user_id]
+    if @system.observation.user_id != session[:user_id]
       @error = "Can't do that, it's not yours"
       @systems = System.all
       render :index
@@ -39,9 +39,9 @@ class SystemsController < ApplicationController
   end
 
   def destroy
-    if @system.observation_id != session[:user_id]
+    @systems = System.all
+    if @system.observation.user_id != session[:user_id]
       @error = "Can't do that, it's not yours"
-      @systems = System.all
       render :index
     else 
       @system.destroy

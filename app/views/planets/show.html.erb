@@ -2,10 +2,10 @@
 
 <%= @planet.name %>
 <br>
+<% if session[:user_id] == @planet.observation.user_id %>
 <%= link_to "Edit Planet", edit_observation_planet_path(@planet.observation) %>
 <br>
 <%= link_to "Destroy", @planet, method: :delete, data: {confirm: "Sure?"} %>
 <br>
-<% if session[:user_id] %>
-<%= link_to "Back to Observation", @planet.observation %>
 <% end %>
+<%= link_to "Back to Observation", @planet.observation %>

@@ -4,29 +4,33 @@
 <%= @observation.name %>
 <h1>Systems</h1>
 <% @observation.systems.each do |system| %>
-<%= link_to system.name, observation_system_path(@observation, system) %>
+<p>System: <%= link_to system.name, observation_system_path(@observation, system) %></p>
 <br>
 <% end %>
 <br>
-<%= link_to "Add System", new_observation_system_path(@observation) %>
 
 <h1>Planets</h1>
 <% @observation.planets.each do |planet| %>
-<%= link_to planet.name, observation_planet_path(@observation, planet) %>
+<p>Planet: <%= link_to planet.name, observation_planet_path(@observation, planet) %></p>
 <br>
 <% end %>
 <br>
-<%= link_to "Add Planet", new_observation_planet_path(@observation) %>
 
 <h1>Galaxies</h1>
 <% @observation.galaxies.each do |galaxy| %>
-<%= link_to galaxy.name, observation_galaxy_path(@observation, galaxy) %>
+<p>Galaxy: <%= link_to galaxy.name, observation_galaxy_path(@observation, galaxy) %></p>
 <br>
 <% end %>
 <br>
-<%= link_to "Add Galaxy", new_observation_galaxy_path(@observation) %>
-
+<% if session[:user_id] == @observation.user_id %>
+<% end %>
 <br>
-<br>
-<%= link_to "Edit Observation", edit_observation_path %>
+<% if session[:user_id] == @observation.user_id %>
+<%= link_to "Add System", new_observation_system_path(@observation) %> |
+<%= link_to "Add Planet", new_observation_planet_path(@observation) %> |
+<%= link_to "Add Galaxy", new_observation_galaxy_path(@observation) %> |
+<%= link_to "Edit Observation", edit_observation_path %> |
 <%= link_to "Destroy", @observation, method: :delete, data: {confirm: "Sure?"} %>
+<% end %>
+<br>
+<%= link_to "Back to User Home", user_path(@observation.user_id) %>

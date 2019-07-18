@@ -2,21 +2,15 @@ I went ahead and looked through your code and there is a lot of great functional
 
 YOU HAVE TO CONNECT PLANETS TO OBSERVATIONS
 BUT ALSO TO SYSTEMS
-
-# require login
-
-# have show edit update destory only availble to logged in users under users
-
-# user can be found by session so it doesnt need to be a nested resource
-
 #create planets on ob new/create edit/update/
 (on index/show it will link to edit path to create planets/systems)
 (destroy should destroy all planets and systems created for observation)
 
-# implment sessions and security before moving on so you can carrys session hash all over with you so you dont have to keep users/id in params
-
-# perhaps have only users new/create
-
-just to save time
-
 <%= collection_select(:observation, :user_id, User.all, :id, :username, {}, {multiple: false}) %>
+
+everything except seeing all users
+index/show you'll just redriect them to the edit page
+in systems/planets you'll show them individual and all as a whole collective outside from observations
+in observations new/create you'll be able to add planets and systems one time
+in observations edit/update you'll be able to edit names and delete planets/systems one time
+in observations destroy you should delete planets/systems one time
