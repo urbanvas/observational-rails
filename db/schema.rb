@@ -10,7 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_07_12_165250) do
+ActiveRecord::Schema.define(version: 2019_07_17_212202) do
+
+  create_table "galaxies", force: :cascade do |t|
+    t.string "name"
+    t.integer "observation_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["observation_id"], name: "index_galaxies_on_observation_id"
+  end
 
   create_table "observations", force: :cascade do |t|
     t.string "name"
@@ -24,11 +32,9 @@ ActiveRecord::Schema.define(version: 2019_07_12_165250) do
     t.string "name"
     t.boolean "life"
     t.integer "observation_id"
-    t.integer "system_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["observation_id"], name: "index_planets_on_observation_id"
-    t.index ["system_id"], name: "index_planets_on_system_id"
   end
 
   create_table "systems", force: :cascade do |t|

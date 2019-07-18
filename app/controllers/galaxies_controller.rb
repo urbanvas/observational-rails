@@ -44,7 +44,7 @@ class GalaxiesController < ApplicationController
       render :index
     else 
       @galaxy.destroy
-      redirect_to galaxys_path
+      redirect_to galaxies_path
     end
   end
 

@@ -13,11 +13,11 @@ class SessionsController < ApplicationController
               session[:user_id] = @user.id
               redirect_to user_path(@user)
             else
-              @error = "hi from elseif"
+              @error = "Something went wrong"
               render :new
             end
         else
-          @error = "hi"
+          @error = "Something went wrong"
           render :new
         end
     end

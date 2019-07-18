@@ -54,7 +54,6 @@ class PlanetsController < ApplicationController
       @planet = Planet.find(params[:id])
     end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
     def planet_params
       params.require(:planet).permit(:name, :life, :observation_id, :system_id)
     end

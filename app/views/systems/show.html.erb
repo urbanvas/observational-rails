@@ -5,3 +5,7 @@
 <%= link_to "Edit System", edit_observation_system_path(@system.observation) %>
 <br>
 <%= link_to "Destroy", @system, method: :delete, data: {confirm: "Sure?"} %>
+<br>
+<% if session[:user_id] %>
+<%= link_to "Back to Observation", @system.observation %>
+<% end %>
