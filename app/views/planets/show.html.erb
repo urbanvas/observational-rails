@@ -1,15 +1,7 @@
-<p id="notice"><%= notice %></p>
+<h1>Show Page</h1>
 
-
-  <tbody>
-    <% @planets.each do |planet| %>
-      <tr>
-        <%= planet.name %>
-        <td><%= link_to 'Show', planet %></td>
-        <td><%= link_to 'Edit', edit_planet_path(planet) %></td>
-        <br>
-        <td><%= link_to 'Destroy', planet, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        <br>
-      </tr>
-    <% end %>
-  </tbody>
+<%= @planet.name %>
+<br>
+<%= link_to "Edit Planet", edit_observation_planet_path(@planet.observation) %>
+<br>
+<%= link_to "Destroy", @planet, method: :delete, data: {confirm: "Sure?"} %>

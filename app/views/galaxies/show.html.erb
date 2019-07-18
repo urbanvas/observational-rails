@@ -1,0 +1,7 @@
+<h1>Show Page</h1>
+
+<%= @galaxy.name %>
+<br>
+<%= link_to "Edit Galaxy", edit_observation_galaxy_path(@galaxy.observation) %>
+<br>
+<%= link_to "Destroy", @galaxy, method: :delete, data: {confirm: "Sure?"} %>

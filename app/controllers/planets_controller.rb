@@ -7,7 +7,6 @@ class PlanetsController < ApplicationController
   end
 
   def show
-    @planets = User.find(1).observations[0].planets
   end
 
   def new
@@ -51,7 +50,6 @@ class PlanetsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
     def set_planet
       @planet = Planet.find(params[:id])
     end

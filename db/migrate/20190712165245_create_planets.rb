@@ -4,7 +4,6 @@ class CreatePlanets < ActiveRecord::Migration[5.2]
       t.string :name
       t.boolean :life
       t.belongs_to :observation
-      t.belongs_to :system
       t.timestamps
     end
   end

@@ -1,0 +1,6 @@
+<h1>Editing Galaxy</h1>
+
+<%= form_for @galaxy do |f| %>
+    <%= render 'error/error', :model => @galaxy %> 
+    <%= render 'form', f: f %>
+<% end %>
