@@ -18,8 +18,7 @@ class SystemsController < ApplicationController
 
   def create
     @system = System.new(system_params)
-    if @system.valid?
-      @system.save
+    if @system.save
       redirect_to @system
     else
       render :new
@@ -28,7 +27,7 @@ class SystemsController < ApplicationController
 
   def update
     if @system.observation.user_id != session[:user_id]
-      @error = "Can't do that, it's not yours"
+      flash[:notice] = "Can't do that, it's not yours"
       @systems = System.all
       render :index
     elsif @system.update(system_params)
@@ -41,7 +40,7 @@ class SystemsController < ApplicationController
   def destroy
     @systems = System.all
     if @system.observation.user_id != session[:user_id]
-      @error = "Can't do that, it's not yours"
+      flash[:notice] = "Can't do that, it's not yours"
       render :index
     else 
       @system.destroy

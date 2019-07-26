@@ -18,8 +18,7 @@ class PlanetsController < ApplicationController
 
   def create
     @planet = Planet.new(planet_params)
-    if @planet.valid?
-      @planet.save
+    if @planet.save
       redirect_to @planet
     else
       render :new
@@ -28,7 +27,7 @@ class PlanetsController < ApplicationController
 
   def update
     if @planet.observation.user_id != session[:user_id]
-      @error = "Can't do that, it's not yours"
+      flash[:notice] = "Can't do that, it's not yours"
       @planets = Planet.all
       render :index
     elsif @planet.update(planet_params)
@@ -41,7 +40,7 @@ class PlanetsController < ApplicationController
   def destroy
     @planets = Planet.all
     if @planet.observation.user_id != session[:user_id]
-      @error = "Can't do that, it's not yours"
+      flash[:notice] = "Can't do that, it's not yours"
       render :index
     else 
       @planet.destroy

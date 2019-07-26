@@ -1,6 +1,6 @@
 <h1>Index page of All Galaxies</h1>
-<% if @error %>
-    <h3><%= @error %></h3>
+<% if flash[:notice] %>
+    <h3><%= flash[:notice] %></h3>
 <% end %>
 
 <% @galaxies.each do |galaxy| %>

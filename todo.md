@@ -14,3 +14,9 @@ in systems/planets you'll show them individual and all as a whole collective out
 in observations new/create you'll be able to add planets and systems one time
 in observations edit/update you'll be able to edit names and delete planets/systems one time
 in observations destroy you should delete planets/systems one time
+
+Use scope
+add more urls
+Add styling 
+
+Two way has many thru

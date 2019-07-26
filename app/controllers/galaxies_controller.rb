@@ -17,8 +17,7 @@ class GalaxiesController < ApplicationController
 
   def create
     @galaxy = Galaxy.new(galaxy_params)
-    if @galaxy.valid?
-      @galaxy.save
+    if @galaxy.save
       redirect_to @galaxy
     else
       render :new
@@ -27,7 +26,7 @@ class GalaxiesController < ApplicationController
 
   def update
     if @galaxy.observation.user_id != session[:user_id]
-      @error = "Can't do that, it's not yours"
+      flash[:notice] = "Can't do that, it's not yours"
       @galaxys = Galaxy.all
       render :index
     elsif @galaxy.update(galaxy_params)
@@ -40,7 +39,7 @@ class GalaxiesController < ApplicationController
   def destroy
     @galaxies = Galaxy.all
     if @galaxy.observation.user_id != session[:user_id]
-      @error = "Can't do that, it's not yours"
+      flash[:notice] = "Can't do that, it's not yours"
       render :index
     else 
       @galaxy.destroy

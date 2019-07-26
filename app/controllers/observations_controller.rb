@@ -19,8 +19,7 @@ class ObservationsController < ApplicationController
   def create
     @observation = Observation.new(observation_params)
     @observation.user_id = session[:user_id]
-    if @observation.valid?
-      @observation.save
+    if @observation.save
       redirect_to @observation
     else
       render :new
@@ -29,7 +28,7 @@ class ObservationsController < ApplicationController
 
   def update
       if @observation.user_id != session[:user_id]
-        @error = "Can't do that, it's not yours"
+        flash[:notice] = "Can't do that, it's not yours"
         @observations = Observation.all
         render :index
       elsif @observation.update(observation_params)
@@ -41,7 +40,7 @@ class ObservationsController < ApplicationController
 
   def destroy
     if @observation.user_id != session[:user_id]
-      @error = "Can't do that, it's not yours"
+      flash[:notice] = "Can't do that, it's not yours"
       @observations = Observation.all
       render :index
     else 
