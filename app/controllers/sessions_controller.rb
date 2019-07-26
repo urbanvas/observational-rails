@@ -13,11 +13,11 @@ class SessionsController < ApplicationController
             session[:user_id] = @user.id
             redirect_to user_path(@user)
           else
-            @error = "Something went wrong"
+            flash[:notice] = "Can't do that, it's not yours"
             render :new
           end
       else
-        @error = "Something went wrong"
+        flash[:notice] = "Can't do that, it's not yours"
         render :new
       end
   end
