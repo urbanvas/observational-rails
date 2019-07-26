@@ -1,4 +1,6 @@
 class ObservationsController < ApplicationController
+  layout "main"
+  before_action :layout
   before_action :set_observation, only: [:show, :edit, :update, :destroy]
   before_action :authentication_required
 
@@ -51,7 +53,7 @@ class ObservationsController < ApplicationController
         planet.destroy
       end
       @observation.destroy
-      redirect_to observations_path
+      redirect_to user_path(session[:user_id])
     end
   end
 

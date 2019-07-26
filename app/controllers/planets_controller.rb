@@ -1,4 +1,6 @@
 class PlanetsController < ApplicationController
+  layout "main"
+  before_action :layout
   before_action :set_planet, only: [:show, :edit, :update, :destroy]
   before_action :authentication_required
 
@@ -38,13 +40,12 @@ class PlanetsController < ApplicationController
   end
 
   def destroy
-    @planets = Planet.all
     if @planet.observation.user_id != session[:user_id]
       flash[:notice] = "Can't do that, it's not yours"
       render :index
     else 
       @planet.destroy
-      redirect_to planets_path
+      redirect_to observation_path(@planet.observation)
     end
   end
 

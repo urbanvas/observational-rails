@@ -1,7 +1,6 @@
 class Planet < ApplicationRecord
     belongs_to :observation
+    has_many :users, through: :observations
 
     validates :name, presence: true
-    
-    scope :life, -> { where(life: true) }
 end

@@ -1,4 +1,6 @@
 class SystemsController < ApplicationController
+  layout "main"
+  before_action :layout
   before_action :set_system, only: [:show, :edit, :update, :destroy]
   before_action :authentication_required
 
@@ -38,13 +40,12 @@ class SystemsController < ApplicationController
   end
 
   def destroy
-    @systems = System.all
     if @system.observation.user_id != session[:user_id]
       flash[:notice] = "Can't do that, it's not yours"
       render :index
     else 
       @system.destroy
-      redirect_to systems_path
+      redirect_to observation_path(@system.observation)
     end
   end
 

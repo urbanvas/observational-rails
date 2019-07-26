@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  layout "main"
+  before_action :layout
   before_action :set_user, only: [:show]
   before_action :authentication_required, only: [:show]
 

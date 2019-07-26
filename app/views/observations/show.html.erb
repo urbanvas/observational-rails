@@ -33,4 +33,4 @@
 <%= link_to "Destroy", @observation, method: :delete, data: {confirm: "Sure?"} %>
 <% end %>
 <br>
-<%= link_to "Back to User Home", user_path(@observation.user_id) %>
+<%= link_to "Back to User Home", user_path(session[:user_id]) %>

@@ -1,4 +1,6 @@
 class GalaxiesController < ApplicationController
+  layout "main"
+  before_action :layout
   before_action :set_galaxy, only: [:show, :edit, :update, :destroy]
   before_action :authentication_required
   def index
@@ -37,13 +39,12 @@ class GalaxiesController < ApplicationController
   end
 
   def destroy
-    @galaxies = Galaxy.all
     if @galaxy.observation.user_id != session[:user_id]
       flash[:notice] = "Can't do that, it's not yours"
       render :index
     else 
       @galaxy.destroy
-      redirect_to galaxies_path
+      redirect_to observation_path(@galaxy.observation)
     end
   end
 

@@ -1,8 +1,12 @@
 * {
-	background-color: aqua;
+	background-color: grey;
 }
 
 h1 {
-	color: red;
+	color: white;
 	font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+.dismyclass {
+	font-size: 3em;
 }
