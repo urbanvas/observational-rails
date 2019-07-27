@@ -1,12 +1,6 @@
-<h1>Index page of All Planets</h1>
-<% if flash[:notice] %>
-    <h3><%= flash[:notice] %></h3>
-<% end %>
-
 <% @planets.each do |planet| %>
     <p>Planet: <%= link_to planet.name , planet %></p>
     <br>
 <% end %>
 
-<%= link_to "See Planets with Life", life_path %>
 <%= link_to "Back to User Home", user_path(session[:user_id]) %>

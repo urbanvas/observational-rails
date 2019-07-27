@@ -4,6 +4,10 @@ class PlanetsController < ApplicationController
   before_action :set_planet, only: [:show, :edit, :update, :destroy]
   before_action :authentication_required
 
+  def life
+    @planets = Planet.life?
+  end
+
   def index
     @planets = Planet.all
   end

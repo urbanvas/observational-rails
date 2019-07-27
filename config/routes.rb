@@ -6,6 +6,8 @@ Rails.application.routes.draw do
 
   get '/auth/:provider/callback', to: 'sessions#create'
 
+  get '/life', to: 'planets#life'
+
   resources :observations, except: [:index, :show] do
     resources :systems
     resources :planets
