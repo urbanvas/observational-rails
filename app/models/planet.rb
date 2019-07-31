@@ -1,5 +1,6 @@
 class Planet < ApplicationRecord
-    belongs_to :observation
+    has_many :observations
+    has_many :users, through: :observations
 
     scope :life?, -> {where(life: true)}
 

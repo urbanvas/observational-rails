@@ -3,7 +3,6 @@ class CreatePlanets < ActiveRecord::Migration[5.2]
     create_table :planets do |t|
       t.string :name
       t.boolean :life
-      t.belongs_to :observation
       t.timestamps
     end
   end

@@ -10,3 +10,5 @@ rails db:drop && rails db:migrate && rails db:seed
 u = User.first
 o = Observation.first
 p = Planet.first
+s = System.first
+g = Galaxy.first

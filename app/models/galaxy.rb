@@ -1,6 +1,6 @@
 class Galaxy < ApplicationRecord
-    belongs_to :observation
-    has_many :users, through: :observation
+    has_many :observations
+    has_many :users, through: :observations
 
     validates :name, presence: true
 end
