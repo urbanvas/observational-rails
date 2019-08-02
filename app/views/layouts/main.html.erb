@@ -11,10 +11,9 @@
 
   <body>
   <nav>
-    <%= link_to "Planets", planets_path, class: "dismyclass" %>
-    <%= link_to "Systems", systems_path %>
-    <%= link_to "Galaxies", galaxies_path %>
+    <%= link_to "Galaxies", galaxies_path, class: "dismyclass"  %>
     <%= link_to "Observations", observations_path %>
+
   </nav>
     <%= yield %>
   </body>

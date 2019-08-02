@@ -8,16 +8,20 @@ Rails.application.routes.draw do
 
   get '/life', to: 'planets#life'
 
-  resources :observations, except: [:index, :show] do
-    resources :systems
-    resources :planets
+  resources :users, only: [:show, :new, :create]
+  resources :observations
+
+  resources :observations, only: [:show] do
     resources :galaxies
   end
 
-  resources :users, only: [:show, :new, :create]
-  resources :observations, only: [:index, :show]
-  resources :systems, only: [:index, :show, :create, :update, :destroy]
-  resources :planets, only: [:index, :show, :create, :update, :destroy]
-  resources :galaxies, only: [:index, :show, :create, :update, :destroy]
+  resources :galaxies
+
+  # # resources :observations, except: [:index, :show] do
+  #   resources :galaxies
+  # # end
+
+  # resources :observations, only: [:index, :show]
+  # resources :galaxies, only: [:index, :show, :create, :update, :destroy]
 
 end

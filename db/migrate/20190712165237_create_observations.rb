@@ -3,8 +3,6 @@ class CreateObservations < ActiveRecord::Migration[5.2]
     create_table :observations do |t|
       t.string :name
       t.belongs_to :user
-      t.belongs_to :planet
-      t.belongs_to :system
       t.belongs_to :galaxy
       t.timestamps
     end

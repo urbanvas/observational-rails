@@ -1,6 +1,6 @@
 class ObservationsController < ApplicationController
   layout "main"
-  before_action :layout
+  before_action :layout_models
   before_action :set_observation, only: [:show, :edit, :update, :destroy]
   before_action :authentication_required
 
@@ -46,11 +46,8 @@ class ObservationsController < ApplicationController
       @observations = Observation.all
       render :index
     else 
-      @observation.systems.each do |system|
-        system.destroy
-      end
-      @observation.planets.each do |planet|
-        planet.destroy
+      @observation.galaxies.each do |galaxy|
+        galaxy.destroy
       end
       @observation.destroy
       redirect_to user_path(session[:user_id])
@@ -63,6 +60,6 @@ class ObservationsController < ApplicationController
     end
 
     def observation_params
-        params.require(:observation).permit(:name, user_id: session[:user_id])
+        params.require(:observation).permit(:name, :user_id)
     end
 end

@@ -12,3 +12,34 @@ o = Observation.first
 p = Planet.first
 s = System.first
 g = Galaxy.first
+
+
+
+<h1>Planets</h1>
+<% @observation.planets.each do |planet| %>
+<p>Planet: <%= link_to planet.name, observation_planet_path(@observation, planet) %></p>
+<br>
+<% end %>
+<br>
+
+<h1>Galaxies</h1>
+<% @observation.galaxies.each do |galaxy| %>
+<p>Galaxy: <%= link_to galaxy.name, observation_galaxy_path(@observation, galaxy) %></p>
+<br>
+<% end %>
+<br>
+<% if session[:user_id] == @observation.user_id %>
+<% end %>
+<br>
+<% if session[:user_id] == @observation.user_id %>
+<%= link_to "Add System", new_observation_system_path(@observation) %> |
+<%= link_to "Add Planet", new_observation_planet_path(@observation) %> |
+<%= link_to "Add Galaxy", new_observation_galaxy_path(@observation) %> |
+<%= link_to "Edit Observation", edit_observation_path %> |
+<%= link_to "Destroy", @observation, method: :delete, data: {confirm: "Sure?"} %>
+<% end %>
+<br>
+<%= link_to "Back to User Home", user_path(session[:user_id]) %>
+
+
+<%= link_to "Back to Observation", @system.observation %>

@@ -7,7 +7,5 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 u = User.create!(username: "vasy", email: "vasu", password: "vasu")
-p = Planet.create!(name: "vasu")
-s = System.create!(name: "vasu")
 g = Galaxy.create!(name: "vasu")
-o = Observation.create!(name: "first obv", user_id: 1, planet_id: 1, system_id: 1, galaxy_id: 1)
+o = Observation.create!(name: "first obv", user_id: 1, galaxy_id: 1)

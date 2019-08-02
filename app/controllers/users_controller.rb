@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
-  layout "main"
-  before_action :layout
+  layout "main", except: :new
+  before_action :layout_models
   before_action :set_user, only: [:show]
   before_action :authentication_required, only: [:show]
 
@@ -27,6 +27,6 @@ class UsersController < ApplicationController
     end
 
     def user_params
-      params.require(:user).permit(:username, :email, :password, :search)
+      params.require(:user).permit(:username, :email, :password)
   end
 end

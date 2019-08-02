@@ -15,9 +15,18 @@ class ApplicationController < ActionController::Base
         @current_user ||= User.find(session[:user_id]) if session[:user_id]
     end
 
-    def layout
-        @planets = Planet.all ? Planet.all : nil
-        @systems = System.all ? System.all : nil
+    def layout_models
         @galaxies = Galaxy.all ? Galaxy.all : nil
     end
+
+    def can_edit?(model)
+        bool = false
+        model.observations.each do |ob|
+            if ob.user_id == session[:user_id]
+                bool = true
+            end
+        end
+        bool
+    end
+
 end
