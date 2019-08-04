@@ -19,7 +19,6 @@ class GalaxiesController < ApplicationController
   end
 
   def create
-    raise params.inspect
     @observation = Observation.find(params[:galaxy][:observation_id])
     @galaxy = Galaxy.new(galaxy_params)
     @observation.galaxy = @galaxy

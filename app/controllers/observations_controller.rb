@@ -32,6 +32,7 @@ class ObservationsController < ApplicationController
   def update
       if @observation.user_id != session[:user_id]
         flash[:notice] = "Can't do that, it's not yours"
+        @observations = Observation.all
         render :index
       elsif @observation.update(observation_params)
         redirect_to @observation
@@ -43,6 +44,7 @@ class ObservationsController < ApplicationController
   def destroy
     if @observation.user_id != session[:user_id]
       flash[:notice] = "Can't do that, it's not yours"
+      @observations = Observation.all
       render :index
     else 
       @observation.galaxy.destroy
