@@ -16,4 +16,11 @@ module ApplicationHelper
         bool
     end
 
+    def can_edit_observation?(model)
+        bool = false
+        if model.user_id == session[:user_id]
+            bool = true
+        end
+        bool
+    end
 end

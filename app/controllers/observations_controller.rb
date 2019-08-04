@@ -51,7 +51,9 @@ class ObservationsController < ApplicationController
       @observations = Observation.all
       render :index
     else 
-      @observation.galaxy.destroy
+      if @observation.galaxy
+        @observation.galaxy.destroy
+      end
       @observation.destroy
       redirect_to user_path(session[:user_id])
     end
