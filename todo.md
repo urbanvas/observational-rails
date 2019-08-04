@@ -49,3 +49,6 @@ g = Galaxy.first
 <% if @observation.system %>
 <p>Link to System: <%= link_to @observation.system.name, observation_system_path(@observation, @observation.system) %></p>
 <% end %>
+
+
+find out if you need the hidden field in the observation id in the galaxies form 

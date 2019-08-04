@@ -19,6 +19,7 @@ class GalaxiesController < ApplicationController
   end
 
   def create
+    raise params.inspect
     @observation = Observation.find(params[:galaxy][:observation_id])
     @galaxy = Galaxy.new(galaxy_params)
     @observation.galaxy = @galaxy
@@ -31,13 +32,24 @@ class GalaxiesController < ApplicationController
   end
 
   def update
-      @galaxy.update(galaxy_params)
-      redirect_to @galaxy
+      if !can_edit?(@galaxy)
+        flash[:notice] = "Can't do that, it's not yours"
+        render :index
+      elsif @galaxy.update(galaxy_params)
+        redirect_to @galaxy
+      else
+        render :edit
+      end
   end
 
   def destroy
+    if !can_edit?(@galaxy)
+      flash[:notice] = "Can't do that, it's not yours"
+      render :index
+    else
       @galaxy.destroy
       redirect_to user_path(session[:user_id])
+    end
   end
 
   private
