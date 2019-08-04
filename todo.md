@@ -43,3 +43,9 @@ g = Galaxy.first
 
 
 <%= link_to "Back to Observation", @system.observation %>
+
+
+<h1>System</h1>
+<% if @observation.system %>
+<p>Link to System: <%= link_to @observation.system.name, observation_system_path(@observation, @observation.system) %></p>
+<% end %>

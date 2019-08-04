@@ -3,6 +3,7 @@ class GalaxiesController < ApplicationController
   before_action :layout_models
   before_action :set_galaxy, only: [:show, :edit, :update, :destroy]
   before_action :authentication_required
+  
   def index
     @galaxies = Galaxy.all
   end
@@ -18,8 +19,11 @@ class GalaxiesController < ApplicationController
   end
 
   def create
+    @observation = Observation.find(params[:galaxy][:observation_id])
     @galaxy = Galaxy.new(galaxy_params)
-    if @galaxy.save
+    @observation.galaxy = @galaxy
+
+    if @galaxy.save && @observation.save
       redirect_to @galaxy
     else
       render :new
@@ -27,25 +31,13 @@ class GalaxiesController < ApplicationController
   end
 
   def update
-    if @galaxy.observation.user_id != session[:user_id]
-      flash[:notice] = "Can't do that, it's not yours"
-      @galaxys = Galaxy.all
-      render :index
-    elsif @galaxy.update(galaxy_params)
+      @galaxy.update(galaxy_params)
       redirect_to @galaxy
-    else
-      render :edit
-    end
   end
 
   def destroy
-    if @galaxy.observation.user_id != session[:user_id]
-      flash[:notice] = "Can't do that, it's not yours"
-      render :index
-    else 
       @galaxy.destroy
-      redirect_to observation_path(@galaxy.observation)
-    end
+      redirect_to user_path(session[:user_id])
   end
 
   private
@@ -54,6 +46,6 @@ class GalaxiesController < ApplicationController
     end
 
     def galaxy_params
-      params.require(:galaxy).permit(:name, :observation_id)
+      params.require(:galaxy).permit(:name)
     end
 end

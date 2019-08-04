@@ -2,10 +2,11 @@
 
 <%= @galaxy.name %>
 <br>
-<% if session[:user_id] == @galaxy.observation.user_id %>
-<%= link_to "Edit Galaxy", edit_observation_galaxy_path(@galaxy.observation) %>
+<% if can_edit?(@galaxy) %>
+<%= link_to "Edit Galaxy", edit_galaxy_path(@galaxy) %>
 <br>
 <%= link_to "Destroy", @galaxy, method: :delete, data: {confirm: "Sure?"} %>
 <br>
 <% end %>
-<%= link_to "Back to Observation", @galaxy.observation %>
+<%= link_to "All Galaxies", galaxies_path, class: "dismyclass_hi"  %>
+<%= link_to "User Home", user_path(session[:user_id]) %>

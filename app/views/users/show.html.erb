@@ -1,10 +1,10 @@
 <h1>Show</h1>
 <%= @user.username %>
 <br>
-<% @user.observations.each do |observation| %>
-<p>Observation: <%= link_to observation.name, observation %></p>
+<% @user.galaxies.each do |galaxy| %>
+<p>Galaxy: <%= link_to galaxy.name, galaxy %></p>
 <% end %>
 
 <br>
-<%= link_to "New Observation", new_user_observation_path(@user) %> |
+<%= link_to "New Galaxy", new_observation_path %> |
 <%= link_to 'Logout', logout_path %>

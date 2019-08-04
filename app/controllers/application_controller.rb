@@ -29,4 +29,13 @@ class ApplicationController < ActionController::Base
         bool
     end
 
+    def find_user(model) 
+        user = nil
+        model.user_ids.each do |id|
+            if session[:user_id] == id
+                user = User.find(id)
+            end
+        end
+        user
+    end
 end

@@ -2,13 +2,9 @@
 
 
 <%= @observation.name %>
-<h1>System</h1>
-<% if @observation.system %>
-<p>Link to System: <%= link_to @observation.system.name, observation_system_path(@observation, @observation.system) %></p>
-<% end %>
-<br>
-<br>
 
-<% if session[:user_id] == @observation.user_id %>
-<%= link_to "Add System", new_system_path %> |
+<% if @observation.galaxy %>
+<%= link_to "Show Galaxy", galaxy_path(@observation.galaxy) %>
+<% else %>
+<%= link_to "Create New Galaxy", new_observation_galaxy_path(@observation) %>
 <% end %>
