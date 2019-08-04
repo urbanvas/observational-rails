@@ -23,7 +23,11 @@ class GalaxiesController < ApplicationController
     @galaxy = Galaxy.new(galaxy_params)
     @observation.galaxy = @galaxy
 
-    if @galaxy.save && @observation.save
+    if @observation.user_id != session[:user_id]
+      flash[:notice] = "Can't do that, it's not yours"
+      @observations = Observation.all
+      render 'observations/index'
+    elsif @galaxy.save && @observation.save
       redirect_to @galaxy
     else
       render :new

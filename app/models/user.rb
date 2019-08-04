@@ -5,6 +5,7 @@ class User < ApplicationRecord
     has_many :galaxies, through: :observations
 
     validates :username, :email, :password, presence: true
+    validates :username, uniqueness: true
     validates :password, length: { in: 3..20 }
 
     def self.find_or_create_by_omniauth(auth_hash)
@@ -15,7 +16,7 @@ class User < ApplicationRecord
         end
         if User.exists?(user.id)
             user
-          else
+        else
             user.save!
             user
         end

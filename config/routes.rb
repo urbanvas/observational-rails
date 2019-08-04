@@ -16,4 +16,8 @@ Rails.application.routes.draw do
   resources :observations, only: [:show] do
     resources :galaxies, only: [:new]
   end
+
+  resources :users, only: [:show] do
+    resources :observations, only: [:index]
+  end
 end

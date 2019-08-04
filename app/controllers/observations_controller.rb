@@ -5,7 +5,11 @@ class ObservationsController < ApplicationController
   before_action :authentication_required
 
   def index
+    if request.path_info.include?("users")
+      @observations = User.find(params[:user_id]).observations
+    else
       @observations = Observation.all
+    end
   end
 
   def show
