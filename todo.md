@@ -1,4 +1,4 @@
-<%= collection_select(:observation, :user_id, User.all, :id, :username, {}, {multiple: false}) %>
+<%= collection_select(:observation, :galaxy_id, Galaxy.all, :id, :name, {}, {multiple: false}) %>
 
 add more urls
 Add styling 
@@ -52,3 +52,5 @@ g = Galaxy.first
 
 
 find out if you need the hidden field in the observation id in the galaxies form 
+
+<%= f.collection_select :id, Galaxy.all, :id, :name, {include_blank: true} %>

@@ -20,9 +20,8 @@ class GalaxiesController < ApplicationController
 
   def create
     @observation = Observation.find(params[:galaxy][:observation_id])
-    @galaxy = Galaxy.new(galaxy_params)
+    @galaxy = Galaxy.find_or_create_by(galaxy_params)
     @observation.galaxy = @galaxy
-
     if @observation.user_id != session[:user_id]
       flash[:notice] = "Can't do that, it's not yours"
       @observations = Observation.all

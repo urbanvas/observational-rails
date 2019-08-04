@@ -1,6 +1,13 @@
 <%= f.label :name %>
 <%= f.text_field :name %>
 <%= hidden_field(:galaxy, :observation_id, :value => params[:observation_id]) %>
+ <%= f.text_field :name, list: "categories_autocomplete" %>
+  <datalist id="categories_autocomplete">
+    <% Galaxy.all.each do |category| %>
+      <option value="<%= category.name %>">
+    <% end %>
+  </datalist>
+
 <br>
 
 <%= f.submit %>
