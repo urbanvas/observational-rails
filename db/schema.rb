@@ -14,6 +14,9 @@ ActiveRecord::Schema.define(version: 2019_07_17_212202) do
 
   create_table "galaxies", force: :cascade do |t|
     t.string "name"
+    t.boolean "life"
+    t.string "classification"
+    t.string "color"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

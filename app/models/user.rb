@@ -9,7 +9,7 @@ class User < ApplicationRecord
     validates :password, length: { in: 3..20 }
 
     def self.find_or_create_by_omniauth(auth_hash)
-        user = User.find_or_create_by(email: auth_hash['email']) do |u|
+        user = User.find_or_create_by(email: auth_hash["info"]["email"]) do |u|
             u.username = auth_hash["extra"]["raw_info"]["login"]
             u.email = auth_hash['info']['email']
             u.password = auth_hash['uid']

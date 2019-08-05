@@ -1,7 +1,7 @@
 <h1>Show</h1>
 <%= @user.username %>
 <br>
-<% @user.galaxies.each do |galaxy| %>
+<% @user.galaxies.uniq.each do |galaxy| %>
 <p>Galaxy: <%= link_to galaxy.name, galaxy %></p>
 <% end %>
 

@@ -1,3 +1,5 @@
+USER SHOW PAGE ONLY SHOWS UNIQ GALAXIES, if want to change 'users/show' and drop the .uniq method
+
 <%= collection_select(:observation, :galaxy_id, Galaxy.all, :id, :name, {}, {multiple: false}) %>
 
 add more urls
@@ -54,3 +56,31 @@ g = Galaxy.first
 find out if you need the hidden field in the observation id in the galaxies form 
 
 <%= f.collection_select :id, Galaxy.all, :id, :name, {include_blank: true} %>
+
+
+
+
+<%= f.label :name %>
+<%= f.text_field :name %>
+
+<%= f.label :life %>
+<%= f.check_box :life %>
+
+<%= f.label :classification%>
+<%= f.select :classification, ['Elliptical', 'Spiral', 'Irregular'] %>
+
+<%= f.label :color %>
+<%= f.text_field :color %>
+
+<datalist id="categories_autocomplete">
+  <% Galaxy.all.each do |category| %>
+    <option value="<%= category.name %>">
+  <% end %>
+</datalist>
+
+<%= hidden_field(:galaxy, :observation_id, :value => params[:observation_id]) %>
+
+
+<br>
+
+<%= f.submit %>

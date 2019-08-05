@@ -1,13 +1,17 @@
 <%= f.label :name %>
 <%= f.text_field :name %>
-<%= hidden_field(:galaxy, :observation_id, :value => params[:observation_id]) %>
- <%= f.text_field :name, list: "categories_autocomplete" %>
-  <datalist id="categories_autocomplete">
-    <% Galaxy.all.each do |category| %>
-      <option value="<%= category.name %>">
-    <% end %>
-  </datalist>
 
-<br>
+<%= f.label :life %>
+<%= f.check_box :life %>
+
+<%= f.label :classification%>
+<%= f.select :classification, ['Elliptical', 'Spiral', 'Irregular'] %>
+
+<%= f.label :color %>
+<%= f.text_field :color %>
+
+<%= f.collection_select :id, Galaxy.all, :id, :name, {include_blank: true} %>
+
+<%= hidden_field(:galaxy, :observation_id, :value => @observation ? @observation.id : params[:observation_id]) %>
 
 <%= f.submit %>

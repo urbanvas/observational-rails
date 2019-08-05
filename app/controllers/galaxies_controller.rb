@@ -19,14 +19,20 @@ class GalaxiesController < ApplicationController
   end
 
   def create
+    @galaxy = Galaxy.find_or_create_by(id: params[:galaxy][:id])
+    if @galaxy.id == nil
+      @galaxy = Galaxy.new(galaxy_params)
+    end
     @observation = Observation.find(params[:galaxy][:observation_id])
-    @galaxy = Galaxy.find_or_create_by(galaxy_params)
-    @observation.galaxy = @galaxy
+
+ 
     if @observation.user_id != session[:user_id]
       flash[:notice] = "Can't do that, it's not yours"
       @observations = Observation.all
       render 'observations/index'
-    elsif @galaxy.save && @observation.save
+    elsif @galaxy.save
+      @observation.galaxy = @galaxy
+      @observation.save
       redirect_to @galaxy
     else
       render :new
@@ -60,6 +66,6 @@ class GalaxiesController < ApplicationController
     end
 
     def galaxy_params
-      params.require(:galaxy).permit(:name)
+      params.require(:galaxy).permit(:name, :life, :classification, :color)
     end
 end

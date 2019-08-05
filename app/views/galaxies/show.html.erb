@@ -1,6 +1,10 @@
 <h1>Show Page</h1>
 
 <%= @galaxy.name %>
+<%= @galaxy.life %>
+<%= @galaxy.classification %>
+<%= @galaxy.color %>
+
 <br>
 <% if can_edit?(@galaxy) %>
 <%= link_to "Edit Galaxy", edit_galaxy_path(@galaxy) %>
