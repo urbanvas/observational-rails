@@ -3,6 +3,11 @@ class GalaxiesController < ApplicationController
   before_action :layout_models
   before_action :set_galaxy, only: [:show, :edit, :update, :destroy]
   before_action :authentication_required
+
+  def life
+    @galaxies = Galaxy.life_exists?
+    render :index
+  end
   
   def index
     @galaxies = Galaxy.all

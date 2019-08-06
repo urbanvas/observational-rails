@@ -6,7 +6,7 @@ Rails.application.routes.draw do
 
   get '/auth/:provider/callback', to: 'sessions#create'
 
-  get '/life', to: 'planets#life'
+  get '/life', to: 'galaxies#life'
 
   resources :users, only: [:show, :new, :create]
 
