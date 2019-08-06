@@ -1,16 +1,35 @@
-<%= f.label :name %>
-<%= f.text_field :name %>
-
-<%= f.label :life %>
-<%= f.check_box :life %>
-
-<%= f.label :classification%>
-<%= f.select :classification, ['Elliptical', 'Spiral', 'Irregular'] %>
-
-<%= f.label :color %>
-<%= f.text_field :color %>
-
-<%= f.collection_select :id, Galaxy.all, :id, :name, {include_blank: true} %>
+<%= f.label :name, "Name:" %>
+<span class="input">
+    <%= f.text_field :name %>
+	<span></span>	
+</span>
+<br>
+<%= f.label :life, "Does it have life?:" %>
+<span class="input">
+    <%= f.label :life %>
+    <%= f.check_box :life, placeholder: "Life" %>
+	<span></span>	
+</span>
+<br>
+<%= f.label :classification, "Classification:" %>
+<span class="input">
+    <%= f.select :classification, ['Elliptical', 'Spiral', 'Irregular'], placeholder: "Choose Classification" %>
+	<span></span>	
+</span>
+<br>
+<%= f.label :color, "Color:" %>
+<span class="input">
+    <%= f.text_field :color %>
+	<span></span>	
+</span>
+<br>
+<%= f.label "Or, if Already Discovered" %>
+<br>
+<%= f.label "Pick From Existing Galaxies" %>
+<span class="input">
+    <%= f.collection_select :id, Galaxy.all, :id, :name, {include_blank: true} %>
+	<span></span>	
+</span>
 
 <%= hidden_field(:galaxy, :observation_id, :value => @observation ? @observation.id : params[:observation_id]) %>
 

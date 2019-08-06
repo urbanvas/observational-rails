@@ -1,15 +1,15 @@
 <h1>Show Page</h1>
 
 
-<%= @observation.name %>
+<p>Name of Observation: <%= @observation.name %></p>
 
 <% if @observation.galaxy %>
-<%= link_to "Show Galaxy", galaxy_path(@observation.galaxy) %>
+<%= link_to "Show Galaxy", galaxy_path(@observation.galaxy) %> |
 <% else %>
 <%= link_to "Create New Galaxy", new_observation_galaxy_path(@observation) %>
 <% end %>
 <% if can_edit_observation?(@observation) %>
-<%= link_to "Edit Observation", edit_observation_path(@observation) %>
+| <%= link_to "Edit Observation", edit_observation_path(@observation) %> | 
 <br>
 <%= link_to "Destroy", @observation, method: :delete, data: {confirm: "Sure?"} %>
 <% end %>

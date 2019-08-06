@@ -1,16 +1,16 @@
 <h1>Show Page</h1>
 
-<%= @galaxy.name %>
-<%= @galaxy.life %>
-<%= @galaxy.classification %>
-<%= @galaxy.color %>
+<p>Galaxy Name: <%= @galaxy.name %></p>
+<p>Galaxy Life?: <%= @galaxy.life %></p>
+<p>Galaxy Classification: <%= @galaxy.classification %></p>
+<p>Galaxy Color: <%= @galaxy.color %></p>
 
 <br>
 <% if can_edit?(@galaxy) %>
-<%= link_to "Edit Galaxy", edit_galaxy_path(@galaxy) %>
+<%= link_to "Edit Galaxy", edit_galaxy_path(@galaxy) %> | 
 <br>
 <%= link_to "Destroy", @galaxy, method: :delete, data: {confirm: "Sure?"} %>
 <br>
 <% end %>
-<%= link_to "All Galaxies", galaxies_path, class: "dismyclass_hi"  %>
+<%= link_to "All Galaxies", galaxies_path, class: "dismyclass_hi"  %> |
 <%= link_to "User Home", user_path(session[:user_id]) %>

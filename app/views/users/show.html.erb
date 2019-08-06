@@ -1,5 +1,5 @@
 <h1>Show</h1>
-<%= @user.username %>
+<p>Hello, <%= @user.username %></p>
 <br>
 <% @user.galaxies.uniq.each do |galaxy| %>
 <p>Galaxy: <%= link_to galaxy.name, galaxy %></p>
@@ -7,6 +7,6 @@
 
 <br>
 <%= link_to "New Galaxy", new_observation_path %> |
-<%= link_to "See Your Observations", user_observations_path(@user) %>
-<%= link_to 'Logout', logout_path %>
-<%= link_to 'Life?', life_path %>
+<%= link_to "See Your Observations", user_observations_path(@user) %> |
+<%= link_to 'Logout', logout_path %> |
+<%= link_to 'Life?', life_path %> |
