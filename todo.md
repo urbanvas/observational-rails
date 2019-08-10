@@ -84,3 +84,9 @@ find out if you need the hidden field in the observation id in the galaxies form
 <br>
 
 <%= f.submit %>
+
+galaxies/1/observations
+
+all obs for a paticul galaxy
+
+sorted / ordered

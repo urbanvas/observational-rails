@@ -10,6 +10,10 @@ Rails.application.routes.draw do
 
   resources :users, only: [:show, :new, :create]
 
+  resources :galaxies, only: [:show] do
+    resources :observations, only: [:index]
+  end
+
   resources :observations
   resources :galaxies, except: [:new]
 

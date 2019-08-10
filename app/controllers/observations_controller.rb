@@ -5,7 +5,9 @@ class ObservationsController < ApplicationController
   before_action :authentication_required
 
   def index
-    if request.path_info.include?("users")
+    if params[:galaxy_id] && Galaxy.find_by(id: params[:galaxy_id])
+      @observations = Galaxy.find_by(id: params[:galaxy_id]).observations
+    elsif request.path_info.include?("users")
       @observations = User.find(params[:user_id]).observations
     else
       @observations = Observation.all
