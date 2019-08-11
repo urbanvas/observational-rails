@@ -5,6 +5,9 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
@@ -13,11 +16,9 @@
   <%= image_tag("logo.png", :alt => "logo of moon") %>
   <h1>AstroRails</h1>
   <nav>
-    <%= link_to "Galaxies", galaxies_path, class: "dismyclass"  %>
+    <%= link_to "Galaxies", galaxies_path, class: "dismyclass" %>
     <%= link_to "Observations", observations_path %>
   </nav>
-          <%= yield %>
-
-  
+          <%= yield %> 
   </body>
 </html>
