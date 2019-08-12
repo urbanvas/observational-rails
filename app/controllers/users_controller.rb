@@ -5,6 +5,7 @@ class UsersController < ApplicationController
   before_action :authentication_required, only: [:show]
 
   def show
+    render json: @user
   end
 
   def new

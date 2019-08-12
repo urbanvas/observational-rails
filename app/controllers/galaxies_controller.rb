@@ -11,6 +11,7 @@ class GalaxiesController < ApplicationController
   
   def index
     @galaxies = Galaxy.all
+    render json: @galaxies
   end
 
   def show

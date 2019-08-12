@@ -90,3 +90,7 @@ galaxies/1/observations
 all obs for a paticul galaxy
 
 sorted / ordered
+
+
+
+    <%= link_to "Galaxies", galaxies_path, class: "dismyclass" %>
