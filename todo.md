@@ -94,3 +94,6 @@ sorted / ordered
 
 
     <%= link_to "Galaxies", galaxies_path, class: "dismyclass" %>
+
+
+      <%= image_tag("logo.png", :alt => "logo of moon") %>
