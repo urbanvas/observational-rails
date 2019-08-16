@@ -1,5 +1,4 @@
 class GalaxiesController < ApplicationController
-  layout "main"
   before_action :layout_models
   before_action :set_galaxy, only: [:show, :edit, :update, :destroy]
   before_action :authentication_required

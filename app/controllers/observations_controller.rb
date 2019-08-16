@@ -1,5 +1,4 @@
 class ObservationsController < ApplicationController
-  layout "main"
   before_action :layout_models
   before_action :set_observation, only: [:show, :edit, :update, :destroy]
   before_action :authentication_required
@@ -12,9 +11,17 @@ class ObservationsController < ApplicationController
     else
       @observations = Observation.all
     end
+    respond_to do |f|
+      f.html 
+      f.json { render json: @observations }
+    end
   end
 
   def show
+    respond_to do |f|
+      f.html 
+      f.json { render json: @observation }
+    end
   end
 
   def new

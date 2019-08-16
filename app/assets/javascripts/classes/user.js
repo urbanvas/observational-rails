@@ -1,10 +1,11 @@
 class User {
-	constructor({ username, email }) {
+	constructor({ id, username, email }) {
+		this.id = id;
 		this.username = username;
 		this.email = email;
 	}
 
-	hi() {
-		return 'hello from class';
+	welcome() {
+		return `<h3>Hello, ${this.username}</h3><h4>I hope all is well today</h4>`;
 	}
 }

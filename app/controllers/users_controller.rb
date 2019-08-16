@@ -1,11 +1,16 @@
 class UsersController < ApplicationController
-  layout "main", except: :new
   before_action :layout_models
   before_action :set_user, only: [:show]
   before_action :authentication_required, only: [:show]
 
+  def app
+  end
+
   def show
-    render json: @user
+    respond_to do |f|
+      f.html
+      f.json { render json: @user }
+    end
   end
 
   def new
@@ -16,7 +21,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
         session[:user_id] = @user.id
-        redirect_to user_path(@user)
+        redirect_to app_path
     else
         render :new
     end

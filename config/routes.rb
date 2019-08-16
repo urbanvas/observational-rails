@@ -10,6 +10,8 @@ Rails.application.routes.draw do
 
   resources :users, only: [:show, :new, :create]
 
+  get '/app', to: 'users#app'
+
   resources :galaxies, only: [:show] do
     resources :observations, only: [:index]
   end
