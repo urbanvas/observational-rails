@@ -1,31 +1,24 @@
-$.ready(console.log('hi from JQ'));
-
-// const click = (e) => {
-// 	console.log('clickly');
-// };
-
-// $.get('/observations/new', (data) => {
-// 	console.log('yerr newww', data);
-// });
-
 const getGalaxies = () => {
 	$('#index').html = '';
 	const generateGalaxyHTML = ({ id, name, classification, color, life, observations, users }) => {
 		const generateObservationList = (allObservations) => {
 			let string = '';
 			allObservations.forEach((ob) => {
-				string += `<li>${ob.name}</li>`;
+				string += `<li class="list" data-observationId="${ob.id}">${ob.name}</li>`;
 			});
 			return string;
 		};
 		const generateUserList = (allUsers) => {
 			let string = '';
-			[ ...new Set(allUsers.map((u) => u.username)) ].forEach((username) => {
-				string += `<li>${username}</li>`;
+			const listElements = allUsers.map((user) => {
+				return `<li class="list" data-userId="${user.id}">${user.username}</li>`;
+			});
+			[ ...new Set(listElements) ].forEach((el) => {
+				string += el;
 			});
 			return string;
 		};
-		return `<div id="galaxy-${id}">
+		return `<div id="galaxy-${id} data-galaxyId=${id}">
 			<h3>${name}</h3>
 			<p>This galaxy belongs to ${classification} and its color is ${color}, current it ${life
 			? 'does support'
@@ -95,8 +88,6 @@ const renderUser = () => {
 };
 
 // PUT ALL ENDING FUNCTINS HERE
-
-// getGalaxies();
 
 renderUser();
 // handleObservationAll();
