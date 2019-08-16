@@ -1,17 +1,47 @@
+const getIndividualObservation = (id) => {
+	$('#show').empty();
+	$('#show').html('');
+	const generateIndividualObservationHTML = (observation) => {
+		const newObservation = new Observation(observation);
+		return `<p>The name of this observation is ${newObservation.name}</p>`;
+	};
+	$.get(`/observations/${id}.json`, (ob) => {
+		$('#show').append(generateIndividualObservationHTML(ob));
+	});
+};
+
+const getIndividualUser = (id) => {
+	$('#show').empty();
+	$('#show').html('');
+	const generateIndividualUserHTML = (user) => {
+		const newUser = new User(user);
+		return `<p>The name of this user is ${newUser.username}</p>`;
+	};
+
+	$.get(`/users/${id}.json`, (user) => {
+		$('#show').append(generateIndividualUserHTML(user));
+	});
+};
+
 const getGalaxies = () => {
+	$('#index').empty();
 	$('#index').html = '';
 	const generateGalaxyHTML = ({ id, name, classification, color, life, observations, users }) => {
 		const generateObservationList = (allObservations) => {
 			let string = '';
 			allObservations.forEach((ob) => {
-				string += `<li class="list" data-observationId="${ob.id}">${ob.name}</li>`;
+				string += `<li class="list">
+				<a href="#" data-observationId="${ob.id}" onClick="getIndividualObservation(${ob.id})">${ob.name}</a>
+				</li>`;
 			});
 			return string;
 		};
 		const generateUserList = (allUsers) => {
 			let string = '';
 			const listElements = allUsers.map((user) => {
-				return `<li class="list" data-userId="${user.id}">${user.username}</li>`;
+				return `<li class="list">
+				<a href="#" data-userId="${user.id}" onClick="getIndividualUser(${user.id})">${user.username}</a>
+				</li>`;
 			});
 			[ ...new Set(listElements) ].forEach((el) => {
 				string += el;
@@ -20,7 +50,7 @@ const getGalaxies = () => {
 		};
 		return `<div id="galaxy-${id} data-galaxyId=${id}">
 			<h3>${name}</h3>
-			<p>This galaxy belongs to ${classification} and its color is ${color}, current it ${life
+			<p>This galaxy is classified as ${classification} and its color is ${color}, currently it ${life
 			? 'does support'
 			: 'does not support'} life.</p>
 			<p>Other Observations that have seen this galaxy are:</p>
