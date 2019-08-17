@@ -5,4 +5,8 @@ class Observation {
 		this.user_id = user_id;
 		this.galaxy_id = galaxy_id;
 	}
+
+	generateName() {
+		return `<p>The name of this observation is ${this.name}</p>`;
+	}
 }
