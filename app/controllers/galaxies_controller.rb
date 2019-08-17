@@ -10,7 +10,10 @@ class GalaxiesController < ApplicationController
   
   def index
     @galaxies = Galaxy.all
-    render json: @galaxies
+    respond_to do |f|
+      f.html 
+      f.json { render json: @galaxies }
+    end
   end
 
   def show

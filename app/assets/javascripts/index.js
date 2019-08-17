@@ -1,3 +1,11 @@
+const renderUser = () => {
+	const id = $('#user')[0].dataset.userid;
+	$.get(`/users/${id}.json`, (e) => {
+		const user = new User(e);
+		$('#user').html(user.welcome());
+	});
+};
+
 const getIndividualObservation = (id) => {
 	$.get(`/observations/${id}.json`, (ob) => {
 		const newObservation = new Observation(ob);
@@ -58,17 +66,7 @@ const getGalaxies = () => {
 // 		////////////////////////////
 // 	});
 // };
-///////////////////////////////////
-
-const renderUser = () => {
-	const id = $('#user')[0].dataset.userid;
-	$.get(`/users/${id}.json`, (e) => {
-		const user = new User(e);
-		$('#user').html(user.welcome());
-	});
-};
-
-// PUT ALL ENDING FUNCTINS HERE
-
-renderUser();
+if ($(location).attr('pathname') === '/app') {
+	renderUser();
+}
 // handleObservationAll();
