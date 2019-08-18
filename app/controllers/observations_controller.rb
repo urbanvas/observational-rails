@@ -36,7 +36,8 @@ class ObservationsController < ApplicationController
     @observation.user_id = session[:user_id]
     
     if @observation.save
-      redirect_to @observation
+      # redirect_to @observation
+      render json: @observation 
     else
       render :new
     end

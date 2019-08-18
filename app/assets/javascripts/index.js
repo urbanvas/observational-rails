@@ -1,3 +1,14 @@
+const generateObservationsandUsersforGalaxy = (data, object) => {
+	for (const observation of data.observations) {
+		const newObservation = new Observation(observation);
+		object.observations.push(newObservation);
+	}
+	for (const user of data.users) {
+		const newUser = new User(user);
+		object.users.push(newUser);
+	}
+};
+
 const renderUser = () => {
 	const id = $('#user')[0].dataset.userid;
 	$.get(`/users/${id}.json`, (e) => {
@@ -22,19 +33,34 @@ const getIndividualUser = (id) => {
 
 const getGalaxies = () => {
 	$('#index').empty();
-	$.get('/galaxies', (indexGalaxies) => {
+	$.get('/galaxies.json', (indexGalaxies) => {
 		for (const galaxyData of indexGalaxies) {
 			const galaxy = new Galaxy(galaxyData);
-			for (const observation of galaxyData.observations) {
-				const newObservation = new Observation(observation);
-				galaxy.observations.push(newObservation);
-			}
-			for (const user of galaxyData.users) {
-				const newUser = new User(user);
-				galaxy.users.push(newUser);
-			}
+			generateObservationsandUsersforGalaxy(galaxyData, galaxy);
 			$('#index').append(galaxy.generateGalaxyHTML());
 		}
+	});
+};
+
+const clickHandlers = () => {
+	$('#new_observation').on('submit', function(e) {
+		e.preventDefault();
+		const serializedObservation = $(this).serialize();
+		$.post('/observations', serializedObservation).done((observationData) => {
+			const observation = new Observation(observationData);
+			$(location).attr('href', `/observations/${observation.id}/galaxies/new`);
+		});
+	});
+
+	$('#new_galaxy').on('submit', function(e) {
+		e.preventDefault();
+		const serializedGalaxy = $(this).serialize();
+		$.post('/galaxies', serializedGalaxy).done((data) => {
+			const galaxy = new Galaxy(data);
+			generateObservationsandUsersforGalaxy(data, galaxy);
+			$(location).attr('href', `/app`);
+			$('#show').append(galaxy.generateGalaxyHTML());
+		});
 	});
 };
 
@@ -69,4 +95,5 @@ const getGalaxies = () => {
 if ($(location).attr('pathname') === '/app') {
 	renderUser();
 }
+clickHandlers();
 // handleObservationAll();

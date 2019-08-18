@@ -41,7 +41,8 @@ class GalaxiesController < ApplicationController
     elsif @galaxy.save
       @observation.galaxy = @galaxy
       @observation.save
-      redirect_to @galaxy
+      # redirect_to @galaxy
+      render json: @galaxy
     else
       render :new
     end
