@@ -34,12 +34,14 @@ class ObservationsController < ApplicationController
   def create
     @observation = Observation.new(observation_params)
     @observation.user_id = session[:user_id]
-    
     if @observation.save
       # redirect_to @observation
       render json: @observation 
     else
-      render :new
+      # render json: @observation
+      # flash.now[:notice] = 'Unfortunately failed to sent'
+      head 422
+      # render :new
     end
   end
 

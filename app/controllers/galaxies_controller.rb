@@ -44,7 +44,8 @@ class GalaxiesController < ApplicationController
       # redirect_to @galaxy
       render json: @galaxy
     else
-      render :new
+      head 422
+      # render :new
     end
   end
 

@@ -51,20 +51,28 @@ const clickHandlers = () => {
 	$('#new_observation').on('submit', function(e) {
 		e.preventDefault();
 		const serializedObservation = $(this).serialize();
-		$.post('/observations', serializedObservation).done((observationData) => {
-			const observation = new Observation(observationData);
-			$(location).attr('href', `/observations/${observation.id}/galaxies/new`);
-		});
+		$.post('/observations', serializedObservation)
+			.done((observationData) => {
+				const observation = new Observation(observationData);
+				$(location).attr('href', `/observations/${observation.id}/galaxies/new`);
+			})
+			.fail((e) => {
+				location.reload();
+			});
 	});
 
 	$('#new_galaxy').on('submit', function(e) {
 		e.preventDefault();
 		const serializedGalaxy = $(this).serialize();
-		$.post('/galaxies', serializedGalaxy).done((data) => {
-			const galaxy = new Galaxy(data);
-			generateObservationsandUsersforGalaxy(data, galaxy);
-			$(location).attr('href', `/app`);
-		});
+		$.post('/galaxies', serializedGalaxy)
+			.done((data) => {
+				const galaxy = new Galaxy(data);
+				generateObservationsandUsersforGalaxy(data, galaxy);
+				$(location).attr('href', `/app`);
+			})
+			.fail((e) => {
+				location.reload();
+			});
 	});
 };
 
