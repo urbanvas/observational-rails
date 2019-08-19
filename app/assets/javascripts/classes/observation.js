@@ -7,12 +7,8 @@ class Observation {
 	}
 
 	generateName() {
-		return `<div class="block">
-					<article class="message is-info">
-						<div class="message-header">
-							<p>The name of this observation is ${this.name}</p>
-						</div>
-					</article>
+		return `<div class="notification is-info">
+					<p>The name of this observation is ${this.name}</p>
 				</div>`;
 	}
 }

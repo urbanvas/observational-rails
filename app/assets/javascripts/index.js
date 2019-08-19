@@ -37,8 +37,9 @@ const getIndividualUser = (id) => {
 
 const getGalaxies = () => {
 	$('#index').empty();
+	$('#index').css({ overflow: 'auto', height: '90vh' });
+	$('#title-index').html(`<h1>Index of Galaxies</h1>`);
 	$.get('/galaxies.json', (indexGalaxies) => {
-		$('#index').append(`<h1>Index of Galaxies</h1>`);
 		for (const galaxyData of indexGalaxies) {
 			const galaxy = new Galaxy(galaxyData);
 			generateObservationsandUsersforGalaxy(galaxyData, galaxy);

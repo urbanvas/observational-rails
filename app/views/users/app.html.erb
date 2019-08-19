@@ -1,10 +1,13 @@
 <div class="columns">
     <div class="column is-one-fifth">
         <div id="user" data-userId="<%= current_user.id %>"></div>
-        <a href="#" class="button is-warning" onClick="getGalaxies()">Get All Galaxies</a>
-        <%= link_to "New Galaxy", new_observation_path, class: "button is-warning" %>
+        <a href="#" class="button is-primary" onClick="getGalaxies()">Get All Galaxies</a>
+        <%= link_to "New Galaxy", new_observation_path, class: "button is-success" %>
+        </br>
+        <%= link_to "logout", logout_path, class: "button is-danger" %>
     </div>
     <div class="column is-three-fifths">
+        <div id="title-index"></div>
         <div id="index"></div>
     </div>
     <div class="column is-one-fifth">

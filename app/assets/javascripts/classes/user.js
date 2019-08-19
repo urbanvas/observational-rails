@@ -12,12 +12,8 @@ class User {
 	}
 
 	generateName() {
-		return `<div class="block">
-					<article class="message is-danger">
-						<div class="message-header">
-							<p>The name of this user is ${this.username}</p>
-						</div>
-					</article>
+		return `<div class="notification is-danger">
+					<p>The name of this user is ${this.username}</p>
 				</div>`;
 	}
 }

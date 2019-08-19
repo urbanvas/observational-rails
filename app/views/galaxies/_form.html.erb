@@ -1,28 +1,31 @@
-<div class="field">
-    <%= f.label :name, "Name:", class: "label" %>
-    <%= f.text_field :name, class: "input is-success" %>
-</div>
-<div class="field">
-    <%= f.label :life, "Does it have life?:", class: "checkbox" %>
-    <%= f.check_box :life, placeholder: "Life", class: "checkbox" %>
-</div>
-<div class="field">
-    <%= f.label :classification, "Classification:", class: "label" %>
-    <div class="select">
-        <%= f.select :classification, ['Elliptical', 'Spiral', 'Irregular'], placeholder: "Choose Classification"%>
+<div class="columns">
+    <div class="column is-one-fifth">
+        <div class="field">
+            <%= f.label :name, "Name:", class: "label" %>
+            <%= f.text_field :name, class: "input is-success" %>
+        </div>
+        <div class="field">
+            <%= f.label :life, "Does it have life?:", class: "checkbox" %>
+            <%= f.check_box :life, placeholder: "Life", class: "checkbox" %>
+        </div>
+        <div class="field">
+            <%= f.label :classification, "Classification:", class: "label" %>
+            <div class="select">
+                <%= f.select :classification, ['Elliptical', 'Spiral', 'Irregular'], placeholder: "Choose Classification"%>
+            </div>
+        </div>
+
+        <div class="field">
+            <%= f.label :color, "Color:", class: "label" %>
+            <%= f.text_field :color, class: "input is-success" %>
+        </div>
+        <div class="field">
+            <%= f.label "Or, if Already Discovered Pick From Existing Galaxies", class: "label" %>
+            <div class="select">
+                <%= f.collection_select :id, Galaxy.all, :id, :name, {include_blank: true}, class: "select is-rounded"%>
+            </div>
+        </div>
+        <%= hidden_field(:galaxy, :observation_id, :value => @observation ? @observation.id : params[:observation_id]) %>
     </div>
 </div>
-
-<div class="field">
-    <%= f.label :color, "Color:", class: "label" %>
-    <%= f.text_field :color, class: "input is-success" %>
-</div>
-<div class="field">
-    <%= f.label "Or, if Already Discovered Pick From Existing Galaxies", class: "label" %>
-    <div class="select">
-        <%= f.collection_select :id, Galaxy.all, :id, :name, {include_blank: true}, class: "select is-rounded"%>
-    </div>
-</div>
-<%= hidden_field(:galaxy, :observation_id, :value => @observation ? @observation.id : params[:observation_id]) %>
-
 <%= f.submit class: "button is-success" %>
