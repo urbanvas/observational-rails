@@ -97,3 +97,9 @@ sorted / ordered
 
 
       <%= image_tag("logo.png", :alt => "logo of moon") %>
+
+
+
+      `<li class="button is-outlined is-small">
+			<a href="#" data-userId="${user.id}" onClick="getIndividualUser(${user.id})">${user.username}</a>
+			</li>`;

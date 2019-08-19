@@ -1,6 +1,12 @@
-<a href="#" onClick="getGalaxies()">Get All Galaxies</a>
-<div id="user" data-userId="<%= current_user.id %>"></div>
-<%= link_to "New Galaxy", new_observation_path %>
-<div id="index"></div>
-<h1>SHOW</h1>
-<div id="show"></div>
+<div class="columns">
+    <div class="column is-one-fifth">
+        <div id="user" data-userId="<%= current_user.id %>"></div>
+        <a href="#" class="button is-warning" onClick="getGalaxies()">Get All Galaxies</a>
+        <%= link_to "New Galaxy", new_observation_path, class: "button is-warning" %>
+    </div>
+    <div class="column is-three-fifths">
+        <div id="index"></div>
+    </div>
+    <div class="column is-one-fifth">
+        <div id="show"></div>
+    </div>

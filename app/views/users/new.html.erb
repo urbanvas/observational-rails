@@ -1,6 +1,9 @@
 <h1>New User</h1>
-
-<%= form_for @user do |f| %>
-    <%= render 'error/error', :model => @user %> 
-    <%= render 'form', f: f %>
-<% end %>
+<div class="columns">
+    <div class="column is-two-fifth">
+    <%= form_for @user do |f| %>
+     <%= render 'error/error', :model => @user %> 
+     <%= render 'form', f: f %>
+    <% end %>
+    </div>
+</dibv>

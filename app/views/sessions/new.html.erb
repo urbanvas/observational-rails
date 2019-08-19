@@ -1,22 +1,23 @@
 <h1>Welcome to AstroRails</h1>
+<div class="block">
+
 <% if flash[:notice] %>
-    <h3><%= flash[:notice] %></h3>
+    <h3 class="notification is-danger"><%= flash[:notice] %></h3>
 <% end %>
 <%= form_tag ({controller: 'sessions', action: 'create', method: 'post'}) do %>
-    <%= label_tag 'username' %>
-    <span class="input">
-        <%= text_field_tag :username %>
-    	<span></span>	
-    </span>
-    <br>
-    <%= label_tag 'password' %>
-    <span class="input">
-        <%= password_field_tag :password %>
-    	<span></span>	
-    </span>
-    <br>
-    <%= submit_tag "Login" %>
+    <div class="field">
+        <%= label_tag 'username', nil, class: "label" %>
+        <%= text_field_tag :username, nil, class: "input is-success" %>
+    </div>
+    <div class="field">
+        <%= label_tag 'password', nil, class: "label" %>
+        <%= password_field_tag :password, nil, class: "input is-success" %>
+    </div>
+
+    <%= submit_tag "Login", class: "button is-success" %>
 <% end %>
-<%= link_to "Hello New Astronomer click ME to Create Account", new_user_path %> |
-<%= link_to "Login via Github", "/auth/github" %>
-<br>
+</div>
+<div class="block">
+<%= link_to "Hello New Astronomer click ME to Create Account", new_user_path, class: "button is-primary" %>
+<%= link_to "Login via Github", "/auth/github", class: "button is-primary" %>
+<div>

@@ -18,22 +18,27 @@ const renderUser = () => {
 };
 
 const getIndividualObservation = (id) => {
+	$('#show').empty();
+	$('#show').append(`<h1>Observation:</h1>`);
 	$.get(`/observations/${id}.json`, (ob) => {
 		const newObservation = new Observation(ob);
-		$('#show').html(newObservation.generateName());
+		$('#show').append(newObservation.generateName());
 	});
 };
 
 const getIndividualUser = (id) => {
+	$('#show').empty();
+	$('#show').append(`<h1>User:</h1>`);
 	$.get(`/users/${id}.json`, (user) => {
 		const newUser = new User(user);
-		$('#show').html(newUser.generateName());
+		$('#show').append(newUser.generateName());
 	});
 };
 
 const getGalaxies = () => {
 	$('#index').empty();
 	$.get('/galaxies.json', (indexGalaxies) => {
+		$('#index').append(`<h1>Index of Galaxies</h1>`);
 		for (const galaxyData of indexGalaxies) {
 			const galaxy = new Galaxy(galaxyData);
 			generateObservationsandUsersforGalaxy(galaxyData, galaxy);

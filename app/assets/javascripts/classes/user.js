@@ -8,10 +8,16 @@ class User {
 	}
 
 	welcome() {
-		return `<h3>Hello, ${this.username}</h3><h4>I hope all is well today</h4>`;
+		return `<h3 class="subtitle is-4">Hello, ${this.username}</h3>I hope all is well today.`;
 	}
 
 	generateName() {
-		return `<p>The name of this user is ${this.username}</p>`;
+		return `<div class="block">
+					<article class="message is-danger">
+						<div class="message-header">
+							<p>The name of this user is ${this.username}</p>
+						</div>
+					</article>
+				</div>`;
 	}
 }

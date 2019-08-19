@@ -7,13 +7,27 @@
 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.5/css/bulma.min.css" integrity="sha256-vK3UTo/8wHbaUn+dTQD0X6dzidqc5l7gczvH+Bnowwk=" crossorigin="anonymous" />
     <%= stylesheet_link_tag    'application', media: 'all'%>
     <%= javascript_include_tag 'application', defer: true %>
   </head>
 
   <body>
-    <h1>AstroRails</h1>
-    <%= yield %>
+    <div class="container">
+          <!-- Nav -->
+        <div class="block">
+          <nav class="nav">
+            <div class="nav-center nav-item">
+              <h1 class="title is-1">AstroRails</h1>
+              <h2 class="subtitle">By Neil</h2>
+            </div>
+          </nav>
+        </div>
+          <!-- End Nav -->
+        <div class="block">
+          <%= yield %>
+        </div>
+    </div>
   </body>
 </html>
