@@ -1,24 +1,17 @@
-# README
+# Welcome to AstroRails 
+## A site to log your discoveries across the cosmos.
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+![Homepage](lib/assets/index.png)
 
-Things you may want to cover:
+# Getting Started
+* Clone this repository
+* cd into the project folder
+* Run
+`bundle install && rails s`
+* Enjoy!
 
-* Ruby version
+# Authors
+* **Neil V.** - *Initial work* - [Github](https://github.com/urbanvas)
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+# License
+This project is licensed under the MIT License
