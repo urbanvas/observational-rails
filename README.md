@@ -8,6 +8,7 @@
 * cd into the project folder
 * Run
 `bundle install && rails s`
+* Navigate to http://localhost:3000
 * Enjoy!
 
 # Authors
