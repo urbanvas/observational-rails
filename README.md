@@ -1,5 +1,5 @@
 # Welcome to AstroRails 
-## A site to log your discoveries across the cosmos.
+## A RESTful app to log your discoveries across the cosmos.
 
 ![Homepage](lib/assets/index.png)
 
