@@ -3,6 +3,12 @@
 
 ![Homepage](lib/assets/index.png)
 
+#Blog
+
+Link to Article:
+[Medium](https://medium.com/@neilvseejoor/restful-routes-in-rails-8fc2b0d66dd6)
+
+
 # Getting Started
 * Clone this repository
 * cd into the project folder
