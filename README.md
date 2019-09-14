@@ -7,6 +7,10 @@
 
 [YouTube](https://youtu.be/aC0qL-QG9NA)
 
+# Links
+
+[LinkedIn](https://www.linkedin.com/in/neilvseejoor/)
+
 # Blog
 
 Link to Article:
